@@ -6,21 +6,18 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LearnMore from "@/components/LearnMore";
 import Navbar from "@/components/Navbar";
-<<<<<<< HEAD
-import ThreeProducts from "@/components/ThreeProducts";
-=======
 import ProductCarousel from "@/components/ProductCarousel";
->>>>>>> 398c1d0 (	modified:   next.config.mjs)
+import ThreeProducts from "@/components/ThreeProducts";
 
 export default function Home() {
   return (
     <div >
       <Header />
-      <Navbar/>
-      <ThreeProducts/>
+      <Navbar />
+      <ComfirtBanner />
       <Banner2/>
       <Carousel/>
-      <ComfirtBanner />
+      <ThreeProducts/>
       <ProductCarousel />
       <EmailSignup />
       <LearnMore />

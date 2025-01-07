@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 const ProductCarousel = () => {
@@ -76,8 +77,10 @@ const ProductCarousel = () => {
               }`}
             >
               <div className="relative h-full">
-                <img
+                <Image
                   src={slide.image}
+                  width={300}
+                  height={300}
                   alt={slide.title}
                   className="w-full h-full object-cover"
                 />
