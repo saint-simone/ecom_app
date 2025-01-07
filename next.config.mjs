@@ -4,8 +4,14 @@ const nextConfig = {
     serverActions: {
       enabled: true,
     },
-    // If you need to use external packages in edge runtime
     serverComponentsExternalPackages: ["@node-rs/argon2"],
+  },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'images.pexels.com',
+      },
+    ],
   },
 };
 

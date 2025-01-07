@@ -6,7 +6,11 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LearnMore from "@/components/LearnMore";
 import Navbar from "@/components/Navbar";
+<<<<<<< HEAD
 import ThreeProducts from "@/components/ThreeProducts";
+=======
+import ProductCarousel from "@/components/ProductCarousel";
+>>>>>>> 398c1d0 (	modified:   next.config.mjs)
 
 export default function Home() {
   return (
@@ -17,6 +21,7 @@ export default function Home() {
       <Banner2/>
       <Carousel/>
       <ComfirtBanner />
+      <ProductCarousel />
       <EmailSignup />
       <LearnMore />
       <Footer />
