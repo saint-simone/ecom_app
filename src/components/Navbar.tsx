@@ -44,8 +44,8 @@ const Navbar = () => {
       <div className="w-full border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center space-x-8 h-12 items-center">
-            <a href="#" className="text-gray-700 hover:text-gray-900">Men's Shoes</a>
-            <a href="#" className="text-gray-700 hover:text-gray-900">Women's Shoes</a>
+            <a href="#" className="text-gray-700 hover:text-gray-900">Men&apos;s Shoes</a>
+            <a href="#" className="text-gray-700 hover:text-gray-900">Women&apos;s Shoes</a>
             <a href="#" className="text-gray-700 hover:text-gray-900">New Arrivals</a>
           </div>
         </div>
