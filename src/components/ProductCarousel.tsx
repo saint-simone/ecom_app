@@ -27,7 +27,7 @@ const ProductCarousel: React.FC = () => {
       category: "Women's",
       color: "Stony Beige",
       price: 110,
-      imageUrl: "/https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "womens-wool-runner-go-stony-beige"
     },
     {
@@ -37,7 +37,7 @@ const ProductCarousel: React.FC = () => {
       color: "Dark Grey",
       price: 101,
       originalPrice: 145,
-      imageUrl: "/product2.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "mens-wool-dasher-mizzles-dark-grey"
     },
     {
@@ -47,7 +47,7 @@ const ProductCarousel: React.FC = () => {
       color: "Natural White",
       price: 60,
       originalPrice: 120,
-      imageUrl: "/product3.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "womens-wool-runner-go-fluff-natural-white"
     },
     {
@@ -56,7 +56,7 @@ const ProductCarousel: React.FC = () => {
       category: "Men's",
       color: "Stony Cream",
       price: 120,
-      imageUrl: "/product4.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "mens-tree-runner-go-stony-cream"
     },
     {
@@ -65,7 +65,7 @@ const ProductCarousel: React.FC = () => {
       category: "Women's",
       color: "Jet Black",
       price: 100,
-      imageUrl: "/product5.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "womens-tree-dasher-jet-black"
     },
     {
@@ -74,7 +74,7 @@ const ProductCarousel: React.FC = () => {
       category: "Men's",
       color: "Natural Grey",
       price: 115,
-      imageUrl: "/product6.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "mens-wool-runner-natural-grey"
     },
     {
@@ -83,7 +83,7 @@ const ProductCarousel: React.FC = () => {
       category: "Women's",
       color: "Misty Rose",
       price: 98,
-      imageUrl: "/product7.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "womens-tree-breezers-misty-rose"
     },
     {
@@ -92,7 +92,7 @@ const ProductCarousel: React.FC = () => {
       category: "Men's",
       color: "Navy Night",
       price: 105,
-      imageUrl: "/product8.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "mens-tree-loungers-navy-night"
     },
     {
@@ -101,7 +101,7 @@ const ProductCarousel: React.FC = () => {
       category: "Women's",
       color: "Coastal Blue",
       price: 95,
-      imageUrl: "/product9.jpg",
+      imageUrl: "/pexels-mikhail-nilov-8456072.jpg",
       slug: "womens-tree-skippers-coastal-blue"
     },
   ];
@@ -148,10 +148,9 @@ const ProductCarousel: React.FC = () => {
               <div className="flex transition-transform aspect-square  bg-gray-100 rounded-lg overflow-hidden mb-3">
                 <div className="relative aspect-square">
                   <Image
-                    src={product.imageUrl}
+                    src="/pexels-mikhail-nilov-8456072.jpg"
                     alt={product.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     priority
                   />
