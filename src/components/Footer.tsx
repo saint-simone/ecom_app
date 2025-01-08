@@ -1,6 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaYoutube } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaTiktok } from "react-icons/fa";
 
 
 const Footer: React.FC = () => {
@@ -109,19 +114,19 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex space-x-4">
             <Link href="https://www.tiktok.com" aria-label="TikTok">
-              <i className="fab fa-tiktok"></i>
+            <FaTiktok />
             </Link>
             <Link href="https://www.twitter.com" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
+            <FaSquareXTwitter />
             </Link>
             <Link href="https://www.facebook.com" aria-label="Facebook">
-              <i className="fab fa-facebook-f"></i>
+            <FaFacebook />
             </Link>
             <Link href="https://www.instagram.com" aria-label="Instagram">
-              <i className="fab fa-instagram"></i>
+            <FaInstagram />            
             </Link>
             <Link href="https://www.youtube.com" aria-label="YouTube">
-            <i className="fab fa-youtube"></i>
+            <FaYoutube />
             </Link>
           </div>
           <div className="mt-6">
