@@ -19,9 +19,9 @@ export default function Home() {
       <Header />
       <Navbar />
       <ComfirtBanner />
+      <ThreeProducts />
       <Banner2/>
       <Carousel/>
-      <ThreeProducts />
       <ProductCard />
       <ShopButton3 />
       <ShopButton2 />
