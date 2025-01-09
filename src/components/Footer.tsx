@@ -10,7 +10,7 @@ import { FaTiktok } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white py-8 px-4">
+    <footer className=" bg-black text-white py-8 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Help Section */}
         <div>
