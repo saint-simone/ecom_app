@@ -146,23 +146,23 @@ const Navbar = () => {
 
             {/* Left Menu Items - Hidden on Mobile */}
             <div className="hidden lg:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">MEN</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">WOMEN</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">SOCKS</a>
-              <a href="#" className="text-red-600 hover:text-red-700 font-medium">SALE</a>
+              <a href="/men" className="text-gray-700 hover:text-gray-900 font-medium">MEN</a>
+              <a href="/women" className="text-gray-700 hover:text-gray-900 font-medium">WOMEN</a>
+              <a href="/socks" className="text-gray-700 hover:text-gray-900 font-medium">SOCKS</a>
+              <a href="/sale" className="text-red-600 hover:text-red-700 font-medium">SALE</a>
             </div>
 
             {/* Logo */}
             <div className="flex-shrink-0">
-              <a href="#" className="text-2xl font-light italic">allbirds</a>
+              <a href="/" className="text-2xl font-light italic">allbirds</a>
             </div>
 
             {/* Right Menu Items */}
             <div className="flex items-center">
               <div className="hidden lg:flex items-center space-x-6">
-                <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">SUSTAINABILITY</a>
-                <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">RERUN</a>
-                <a href="#" className="text-gray-700 hover:text-gray-900 font-medium">STORES</a>
+                <a href="/sustainability" className="text-gray-700 hover:text-gray-900 font-medium">SUSTAINABILITY</a>
+                <a href="/return" className="text-gray-700 hover:text-gray-900 font-medium">RERUN</a>
+                <a href="/stores" className="text-gray-700 hover:text-gray-900 font-medium">STORES</a>
               </div>
               
               <div className="flex items-center space-x-4 ml-6">
@@ -182,7 +182,7 @@ const Navbar = () => {
                 <Link href="/cart">
                     <ShoppingBag className="w-5 h-5 text-gray-700 cursor-pointer" />
                 </Link>
-                  <span className="absolute -top-1 -right-1 bg-gray-700 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                  <span className="absolute -top-1 -right-1 bg-gray-700 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">99</span>
                 </div>
               </div>
             </div>
