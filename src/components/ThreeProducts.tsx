@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 
-const ProductCard = ({ title, description, imageUrl }) => {
+const ProductCard: React.FC<{ title: string; description: string; imageUrl: string }> = ({ title, description, imageUrl }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -13,8 +14,9 @@ const ProductCard = ({ title, description, imageUrl }) => {
     >
       {/* Placeholder image with aspect ratio */}
       <div className="relative h-96 w-full bg-neutral-100">
-        <img 
+        <Image
           src={imageUrl} 
+          fill
           alt={title}
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -31,10 +33,12 @@ const ProductCard = ({ title, description, imageUrl }) => {
           <div className={`flex flex-row gap-2 mt-4 transition-all duration-300 ease-in-out ${
             isHovered ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'
           }`}>
-            <button className="flex-1 px-4 py-2 bg-white text-black rounded-full hover:bg-gray-100 text-sm">
+            <button className="flex-1 px-4 py-2 bg-white text-black transition-colors duration-300
+    hover:bg-black hover:text-white text-sm">
               Shop Men
             </button>
-            <button className="flex-1 px-4 py-2 bg-white text-black rounded-full hover:bg-gray-100 text-sm">
+            <button className="flex-1 px-4 py-2 bg-white text-black transition-colors duration-300
+    hover:bg-black hover:text-white text-sm">
               Shop Women
             </button>
           </div>
@@ -49,17 +53,17 @@ const ProductShowcase = () => {
     {
       title: 'Tree Glider',
       description: 'Bouncy, Everyday Active Sneaker',
-      imageUrl: '/api/placeholder/400/500'
+      imageUrl: '/pexels-athul-adhu-186900-684152.jpg'
     },
     {
       title: 'Tree Runner',
       description: 'Breezy, Lightweight Sneaker',
-      imageUrl: '/api/placeholder/400/500'
+      imageUrl: '/pexels-athul-adhu-186900-684152.jpg'
     },
     {
       title: 'Tree Glider',
       description: 'Sleek, Springy Athleisure Style',
-      imageUrl: '/api/placeholder/400/500'
+      imageUrl: '/pexels-athul-adhu-186900-684152.jpg'
     }
   ];
 

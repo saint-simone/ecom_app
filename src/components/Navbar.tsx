@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Search, ShoppingBag, User, HelpCircle, Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface SearchResult {
   id: number;
@@ -171,10 +172,16 @@ const Navbar = () => {
                 >
                   <Search className="w-5 h-5" />
                 </button>
-                <User className="w-5 h-5 text-gray-700 cursor-pointer hidden sm:block" />
+                <Link href="/profile">
+                  <User className="w-5 h-5 text-gray-700 cursor-pointer hidden sm:block" />
+                </Link>
+                <Link href="/help">
                 <HelpCircle className="w-5 h-5 text-gray-700 cursor-pointer hidden sm:block" />
+                </Link>
                 <div className="relative">
-                  <ShoppingBag className="w-5 h-5 text-gray-700 cursor-pointer" />
+                <Link href="/cart">
+                    <ShoppingBag className="w-5 h-5 text-gray-700 cursor-pointer" />
+                </Link>
                   <span className="absolute -top-1 -right-1 bg-gray-700 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
                 </div>
               </div>

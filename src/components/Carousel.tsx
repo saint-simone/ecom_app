@@ -13,22 +13,23 @@ const ProductCarousel = () => {
     {
       id: 1,
       title: "Men's Active Shoes",
-      image: "/api/placeholder/800/600",
-      category: "ON THE MOVE"
+      image: "/pexels-athul-adhu-186900-684152.jpg",
+      category: "ON THE MOVE",
     },
     {
       id: 2,
       title: "Men's Active Shoes",
-      image: "/api/placeholder/800/600",
-      category: "ON THE MOVE"
+      image: "/pexels-athul-adhu-186900-684152.jpg",
+      category: "ON THE MOVE",
     },
     {
       id: 3,
       title: "Casual Wear",
-      image: "/api/placeholder/800/600",
-      category: "EVERYDAY WEAR"
-    }
+      image: "/pexels-athul-adhu-186900-684152.jpg",
+      category: "EVERYDAY WEAR",
+    },
   ];
+  
 
   const filteredSlides = slides.filter(slide => slide.category === activeTab);
 
@@ -79,8 +80,7 @@ const ProductCarousel = () => {
               <div className="relative h-full">
                 <Image
                   src={slide.image}
-                  width={300}
-                  height={300}
+                  fill
                   alt={slide.title}
                   className="w-full h-full object-cover"
                 />
