@@ -1,46 +1,109 @@
-"use client"
+/* eslint-disable @next/next/no-img-element */
+'use client';
 
-import Image from 'next/image';
-import React from 'react';
+import React, { useState, } from 'react'
+import { Card, CardContent } from './ui/card';
 
-interface ButtonProps {
-  href: string;
-  children: React.ReactNode;
-}
-
-const ShopButton3: React.FC<ButtonProps> = ({ href, children }) => (
-  <a 
-    href={href}
-    className="inline-block px-8 py-3 border border-black text-center min-w-[140px]
-    bg-white text-black transition-colors duration-300
-    hover:bg-black hover:text-white"
-  >
-    {children}
-  </a>
-);
-
-const ProductShowcase: React.FC = () => {
+const ProductCard = ({ product }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
   return (
-    <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#ffff]">
-      <div className="text-center mb-8 text-black">
-        <h2 className="text-2xl font-medium mb-2">Warm. Modern. Understated.</h2>
-        <p className="text-lg">Neutrals so subtle they can&apos;t help but stand out.</p>
+    <Card 
+      className="relative overflow-hidden group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <CardContent className="p-0">
+        <div className="relative">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover"
+          />
+          {/* Overlay with buttons that appear on hover */}
+          <div className={`absolute inset-0 bg-black/20 flex flex-col justify-center items-center gap-2 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+            <button className="bg-white px-6 py-2 font-semibold hover:bg-gray-100 transition w-32">
+              SHOP MEN
+            </button>
+            <button className="bg-white px-6 py-2 font-semibold hover:bg-gray-100 transition w-32">
+              SHOP WOMEN
+            </button>
+          </div>
+        </div>
+        <div className="p-4">
+          <div className="flex justify-between items-start">
+            <div>
+              <h3 className="font-semibold">{product.name}</h3>
+              <p className="text-sm text-gray-600">{product.color}</p>
+            </div>
+            <span className="font-semibold">${product.price}</span>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+const ShoeShowcase = () => {
+  const products = [
+    {
+      id: 1,
+      name: 'Wool Runner Mizzles',
+      price: 125,
+      color: 'Stony Cream',
+      image: '/pexels-athul-adhu-186900-684152.jpg'
+    },
+    {
+      id: 2,
+      name: 'Wool Dasher Mizzles',
+      price: 145,
+      color: 'Stony Beige',
+      image: '/pexels-athul-adhu-186900-684152.jpg'
+    },
+    {
+      id: 3,
+      name: 'Tree Dasher 2',
+      price: 135,
+      color: 'Stony Cream',
+      image: '/pexels-mart-production-7880182.jpg'
+    },
+    {
+      id: 4,
+      name: 'Tree Runner Go',
+      price: 120,
+      color: 'Stony Cream',
+      image: '/pexels-mikhail-nilov-8456072.jpg'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen flex">
+      {/* Hero Section - Left Side */}
+      <div className="w-1/2 bg-orange-100 p-12 flex flex-col justify-center">
+        <div className="max-w-xl">
+          <h1 className="text-4xl font-bold mb-4">Warm. Modern. Understated.</h1>
+          <p className="text-xl mb-8">Neutrals so subtle they can&apos;t help but stand out.</p>
+          <div className="flex gap-4">
+            <button className="bg-white px-8 py-3 font-semibold hover:bg-gray-100 transition">
+              SHOP MEN
+            </button>
+            <button className="bg-white px-8 py-3 font-semibold hover:bg-gray-100 transition">
+              SHOP WOMEN
+            </button>
+          </div>
+        </div>
       </div>
-      <div className="w-full gap-8 mb-8">
-        <Image 
-          src="/pexels-kindelmedia-7298647.jpg"
-          width={5184}
-          height={2920}        
-          alt="Black corduroy shoes" 
-          className="w-full"
-        />
-      </div>
-      <div className="flex justify-center gap-4">
-        <ShopButton3 href="/shop/men">SHOP MEN</ShopButton3>
-        <ShopButton3 href="/shop/women">SHOP WOMEN</ShopButton3>
+
+      {/* Product Grid - Right Side */}
+      <div className="w-1/2 bg-white p-8 overflow-y-auto">
+        <div className="grid grid-cols-2 gap-6">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default ProductShowcase;
+export default ShoeShowcase;

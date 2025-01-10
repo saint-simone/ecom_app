@@ -1,43 +1,71 @@
 "use client"
+/* eslint-disable @next/next/no-img-element */
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
-import Image from 'next/image';
-import React from 'react';
+const ProductShowcase = () => {
+  const [showButtons, setShowButtons] = useState(false);
 
-interface ButtonProps {
-  href: string;
-  children: React.ReactNode;
-}
+  const products = [
+    {
+      title: "Runner Go - Corduroy",
+      subtitle: "Classically Cozy Organic Cotton",
+      image: "/pexels-mart-production-7880182.jpg",
+      type: "shoes"
+    },
+    {
+      title: "Wool Lounger",
+      subtitle: "Cozy, Casual, Versatile.",
+      image: "/pexels-kindelmedia-7298647.jpg",
+      type: "comfort"
+    }
+  ];
 
-const ShopButton: React.FC<ButtonProps> = ({ href, children }) => (
-  <a 
-    href={href}
-    className="inline-block px-8 py-3 border border-black text-center min-w-[140px]
-    bg-white text-black transition-colors duration-300
-    hover:bg-black hover:text-white"
-  >
-    {children}
-  </a>
-);
-
-const ProductShowcase: React.FC = () => {
   return (
-    <div className="relative w-full max-w-2xl mx-auto p-8 bg-[#ffff]">
-      <div className="text-center mb-8 text-black">
-        <h2 className="text-2xl font-medium mb-2">Runner Go - Corduroy</h2>
-        <p className="text-lg">Classically Cozy Organic Cotton</p>
-      </div>
-      <div className="w-full gap-8 mb-8">
-        <Image 
-          src="/pexels-kindelmedia-7298647.jpg"
-          width={5184}
-          height={2920}        
-          alt="Black corduroy shoes" 
-          className="w-full"
-        />
-      </div>
-      <div className="flex justify-center gap-4">
-        <ShopButton href="/shop/men">SHOP MEN</ShopButton>
-        <ShopButton href="/shop/women">SHOP WOMEN</ShopButton>
+    <div className="max-w-6xl mx-auto p-8">
+      <div className="grid md:grid-cols-2 gap-8">
+        {products.map((product, index) => (
+          <div 
+            key={index}
+            className="relative group"
+            onMouseEnter={() => setShowButtons(true)}
+            onMouseLeave={() => setShowButtons(false)}
+          >
+            {/* Product Card */}
+            <div className="bg-stone-100 rounded-lg p-6">
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-semibold text-gray-800">{product.title}</h2>
+                <p className="text-gray-600">{product.subtitle}</p>
+              </div>
+              
+              <div className="aspect-video relative">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+
+              {/* Animated Buttons */}
+              <motion.div 
+                className="flex justify-center gap-4 mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: showButtons ? 1 : 0,
+                  y: showButtons ? 0 : 20
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <button className="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
+                  Shop Men
+                </button>
+                <button className="bg-gray-900 text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors">
+                  Shop Women
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

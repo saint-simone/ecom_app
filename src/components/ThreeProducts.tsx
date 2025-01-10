@@ -51,7 +51,7 @@ const ProductCard: React.FC<{ title: string; description: string; imageUrl: stri
 const ProductShowcase = () => {
   const products = [
     {
-      title: 'Tree Glider',
+      title: 'Tree Dasher 2',
       description: 'Bouncy, Everyday Active Sneaker',
       imageUrl: '/pexels-athul-adhu-186900-684152.jpg'
     },
@@ -68,7 +68,7 @@ const ProductShowcase = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 w-full text-center py-4 font-bold ">
       {products.map((product, index) => (
         <ProductCard key={index} {...product} />
       ))}

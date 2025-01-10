@@ -4,10 +4,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 
 const ProductCarousel = () => {
-  const [activeTab, setActiveTab] = useState('ON THE MOVE');
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const tabs = ['ON THE MOVE', 'EVERYDAY WEAR', 'WEATHER READY'];
   
   const slides = [
     {
@@ -28,21 +25,50 @@ const ProductCarousel = () => {
       image: "/pexels-athul-adhu-186900-684152.jpg",
       category: "EVERYDAY WEAR",
     },
+    {
+      id: 4,
+      title: "Casual Comfort",
+      image: "/pexels-athul-adhu-186900-684152.jpg",
+      category: "EVERYDAY WEAR",
+    },
+    {
+      id: 5,
+      title: "Rain Jacket",
+      image: "/pexels-athul-adhu-186900-684152.jpg",
+      category: "WEATHER READY",
+    },
+    {
+      id: 6,
+      title: "Winter Boots",
+      image: "/pexels-athul-adhu-186900-684152.jpg",
+      category: "WEATHER READY",
+    }
   ];
-  
 
-  const filteredSlides = slides.filter(slide => slide.category === activeTab);
+  const tabs = ['ON THE MOVE', 'EVERYDAY WEAR', 'WEATHER READY'];
+  
+  // Update active tab based on current slide
+  const activeTab = slides[currentSlide]?.category;
 
   const nextSlide = () => {
     setCurrentSlide((prev) => 
-      prev === filteredSlides.length - 1 ? 0 : prev + 1
+      prev >= slides.length - 2 ? 0 : prev + 2
     );
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => 
-      prev === 0 ? filteredSlides.length - 1 : prev - 1
+      prev === 0 ? Math.max(0, slides.length - 2) : Math.max(0, prev - 2)
     );
+  };
+
+  // Handle tab click
+  const handleTabClick = (tab: string) => {
+    // Find the first slide index that matches the selected category
+    const slideIndex = slides.findIndex(slide => slide.category === tab);
+    if (slideIndex !== -1) {
+      setCurrentSlide(Math.floor(slideIndex / 2) * 2); // Ensure we start on even numbers
+    }
   };
 
   return (
@@ -52,10 +78,7 @@ const ProductCarousel = () => {
         {tabs.map((tab) => (
           <button
             key={tab}
-            onClick={() => {
-              setActiveTab(tab);
-              setCurrentSlide(0);
-            }}
+            onClick={() => handleTabClick(tab)}
             className={`px-4 py-2 text-sm font-medium ${
               activeTab === tab
                 ? 'border-b-2 border-black text-black'
@@ -69,31 +92,42 @@ const ProductCarousel = () => {
 
       {/* Carousel */}
       <div className="relative overflow-hidden">
-        <div className="relative h-[600px]">
-          {filteredSlides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`absolute w-full h-full transition-transform duration-300 ease-in-out ${
-                index === currentSlide ? 'translate-x-0' : 'translate-x-full'
-              }`}
-            >
-              <div className="relative h-full">
-                <Image
-                  src={slide.image}
-                  fill
-                  alt={slide.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-20">
-                  <div className="absolute bottom-8 left-8">
-                    <h2 className="text-white text-3xl font-bold">
-                      {slide.title}
-                    </h2>
+        <div className="relative h-[600px] flex gap-4">
+          {slides.map((slide, index) => {
+            const isVisible = index === currentSlide || index === currentSlide + 1;
+            const position = index % 2 === 0 ? 'left' : 'right';
+            
+            return (
+              <div
+                key={slide.id}
+                className={`absolute w-[calc(50%-8px)] h-full transition-transform duration-300 ease-in-out ${
+                  position === 'left' ? 'left-0' : 'right-0'
+                } ${
+                  isVisible ? 'translate-x-0 opacity-100' : 
+                  index < currentSlide ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0'
+                }`}
+                style={{
+                  display: isVisible ? 'block' : 'none'
+                }}
+              >
+                <div className="relative h-full">
+                  <Image
+                    src={slide.image}
+                    fill
+                    alt={slide.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-20">
+                    <div className="absolute bottom-8 left-8">
+                      <h2 className="text-white text-3xl font-bold">
+                        {slide.title}
+                      </h2>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Navigation Arrows */}
