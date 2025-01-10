@@ -60,7 +60,7 @@ const ShoeShowcase = () => {
       name: "Wool Dasher Mizzles",
       price: 145,
       color: "Stony Beige",
-      image: "/pexels-athul-adhu-186900-684152.jpg",
+      image: "/pexels-zaktech90-1027130.jpg",
     },
     {
       id: 3,
@@ -83,7 +83,7 @@ const ShoeShowcase = () => {
       {/* Hero Section - Left Side */}
       <div
         className="w-1/2 bg-orange-100 p-12 flex flex-col justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url(/pexels-mansan-1494908-2918534.jpg)" }}
+        style={{ backgroundImage: "url(/pexels-timegrocery-2421374.jpg)" }}
       >
         <div className="max-w-xl">
           <h1 className="text-4xl font-bold mb-4">
