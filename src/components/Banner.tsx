@@ -7,7 +7,7 @@ const ComfortBannerCarousel = () => {
   const slides = [
     {
       id: 1,
-      src: '/pexels-borevina-1778412.jpg',
+      src: '/pexels-bellazhong-2731977.jpg',
       alt: 'Comfort banner background 1',
       title: 'Let Comfort Take You Places',
       description:

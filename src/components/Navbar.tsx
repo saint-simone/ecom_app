@@ -1,24 +1,20 @@
 "use client"
 
-import React, { useState } from 'react';
+import Link from 'next/link'
+import React, { useState, useEffect } from 'react'
 import { Search, ShoppingBag, User, HelpCircle, Menu, X } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 
-interface SearchResult {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-}
-
-const Navbar = () => {
+// Main Component with Header and Navbar
+const HeaderNavbar = () => {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
 
+  // Mock product data for search
   const mockProducts: SearchResult[] = [
     {
       id: 1,
@@ -43,6 +39,26 @@ const Navbar = () => {
     }
   ];
 
+  // Handle scroll to show or hide the header only
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      // Hide header when scrolling down and show it when scrolling up
+      if (currentScrollY > lastScrollY) {
+        setIsHeaderVisible(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
+  // Handle product search
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.length > 0) {
@@ -56,6 +72,7 @@ const Navbar = () => {
     }
   };
 
+  // Toggle search overlay visibility
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
     if (!isSearchOpen) {
@@ -65,7 +82,25 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
+    <div>
+      {/* Header Component */}
+      <header 
+        className={`transition-transform duration-300 ${
+          isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
+          <p className="text-white/60 hidden md:block">
+            Free Shipping On Orders Over $75. Free Returns.
+          </p>
+          <div className="inline-flex gap-1 items-center">
+            <Link href="/shop">
+              <p>Get started now!</p>
+            </Link>
+          </div>
+        </div>
+      </header>
+
       {/* Search Overlay */}
       {isSearchOpen && (
         <div className="fixed inset-0 bg-white z-50">
@@ -128,7 +163,7 @@ const Navbar = () => {
       )}
 
       {/* Main Navbar */}
-      <nav className="w-full border-b border-gray-200 bg-white">
+      <nav className="w-full sticky top-0 z-50 border-b border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-14">
             {/* Mobile Menu Button */}
@@ -201,8 +236,20 @@ const Navbar = () => {
           <a href="#" className="block py-2 text-sm text-gray-700 hover:text-gray-900 font-medium">STORES</a>
         </div>
       </div>
+
+       
+       {/* Secondary Navigation */}
+      <div className="w-full border-b border-gray-200 hidden sm:block bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-center space-x-8 h-12 items-center overflow-x-auto">
+            <a href="#" className="text-gray-700 hover:text-gray-900 whitespace-nowrap">Men&apos;s Shoes</a>
+            <a href="#" className="text-gray-700 hover:text-gray-900 whitespace-nowrap">Women&apos;s Shoes</a>
+            <a href="#" className="text-gray-700 hover:text-gray-900 whitespace-nowrap">New Arrivals</a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Navbar;
+export default HeaderNavbar;

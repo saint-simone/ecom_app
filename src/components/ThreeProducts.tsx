@@ -58,12 +58,12 @@ const ProductShowcase = () => {
     {
       title: 'Tree Runner',
       description: 'Breezy, Lightweight Sneaker',
-      imageUrl: '/pexels-athul-adhu-186900-684152.jpg'
+      imageUrl: '/pexels-zaktech90-1027130.jpg'
     },
     {
       title: 'Tree Glider',
       description: 'Sleek, Springy Athleisure Style',
-      imageUrl: '/pexels-athul-adhu-186900-684152.jpg'
+      imageUrl: '/pexels-lok-lok-447721-1143503.jpg'
     }
   ];
 
