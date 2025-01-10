@@ -79,7 +79,7 @@ const ShoeShowcase = () => {
   ];
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex ml-12"> {/* Added margin-left here */}
       {/* Hero Section - Left Side */}
       <div
         className="w-1/2 bg-orange-100 p-12 flex flex-col justify-center bg-cover bg-center"
