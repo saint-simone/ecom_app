@@ -85,9 +85,7 @@ const HeaderNavbar = () => {
     <div>
       {/* Header Component */}
       <header 
-        className={`transition-transform duration-300 ${
-          isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
-        }`}
+        className={`transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
           <p className="text-white/60 hidden md:block">
@@ -163,66 +161,68 @@ const HeaderNavbar = () => {
       )}
 
       {/* Main Navbar */}
-      <nav className="w-full sticky top-0 z-50 border-b border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center h-14">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden text-gray-700 hover:text-gray-900"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </button>
+      <div className="sticky top-0 z-50 bg-white border-b border-gray-200">
+        <nav className="w-full">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex justify-between items-center h-14">
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden text-gray-700 hover:text-gray-900"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </button>
 
-            {/* Left Menu Items - Hidden on Mobile */}
-            <div className="hidden lg:flex space-x-6">
-              <a href="/men" className="text-gray-700 hover:text-gray-900 text-sm font-medium">MEN</a>
-              <a href="/women" className="text-gray-700 hover:text-gray-900 text-sm font-medium">WOMEN</a>
-              <a href="/socks" className="text-gray-700 hover:text-gray-900 text-sm font-medium">SOCKS</a>
-              <a href="/sale" className="text-red-600 hover:text-red-700 text-sm font-medium">SALE</a>
-            </div>
-
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <a href="/" className="text-xl font-light italic">allbirds</a>
-            </div>
-
-            {/* Right Menu Items */}
-            <div className="flex items-center">
-              <div className="hidden lg:flex items-center space-x-6">
-                <a href="/sustainability" className="text-gray-700 hover:text-gray-900 text-sm font-medium">SUSTAINABILITY</a>
-                <a href="/return" className="text-gray-700 hover:text-gray-900 text-sm font-medium">RERUN</a>
-                <a href="/stores" className="text-gray-700 hover:text-gray-900 text-sm font-medium">STORES</a>
+              {/* Left Menu Items - Hidden on Mobile */}
+              <div className="hidden lg:flex space-x-6">
+                <a href="/men" className="text-gray-700 hover:text-gray-900 text-sm font-medium">MEN</a>
+                <a href="/women" className="text-gray-700 hover:text-gray-900 text-sm font-medium">WOMEN</a>
+                <a href="/socks" className="text-gray-700 hover:text-gray-900 text-sm font-medium">SOCKS</a>
+                <a href="/sale" className="text-red-600 hover:text-red-700 text-sm font-medium">SALE</a>
               </div>
-              
-              <div className="flex items-center space-x-3 ml-4">
-                <button
-                  onClick={toggleSearch}
-                  className="text-gray-700 hover:text-gray-900"
-                >
-                  <Search className="w-4 h-4" />
-                </button>
-                <Link href="/profile">
-                  <User className="w-4 h-4 text-gray-700 cursor-pointer hidden sm:block" />
-                </Link>
-                <Link href="/help">
-                  <HelpCircle className="w-4 h-4 text-gray-700 cursor-pointer hidden sm:block" />
-                </Link>
-                <div className="relative">
-                  <Link href="/cart">
-                    <ShoppingBag className="w-4 h-4 text-gray-700 cursor-pointer" />
+
+              {/* Logo */}
+              <div className="flex-shrink-0">
+                <a href="/" className="text-xl font-light italic">allbirds</a>
+              </div>
+
+              {/* Right Menu Items */}
+              <div className="flex items-center">
+                <div className="hidden lg:flex items-center space-x-6">
+                  <a href="/sustainability" className="text-gray-700 hover:text-gray-900 text-sm font-medium">SUSTAINABILITY</a>
+                  <a href="/return" className="text-gray-700 hover:text-gray-900 text-sm font-medium">RERUN</a>
+                  <a href="/stores" className="text-gray-700 hover:text-gray-900 text-sm font-medium">STORES</a>
+                </div>
+                
+                <div className="flex items-center space-x-3 ml-4">
+                  <button
+                    onClick={toggleSearch}
+                    className="text-gray-700 hover:text-gray-900"
+                  >
+                    <Search className="w-4 h-4" />
+                  </button>
+                  <Link href="/profile">
+                    <User className="w-4 h-4 text-gray-700 cursor-pointer hidden sm:block" />
                   </Link>
-                  <span className="absolute -top-1 -right-1 bg-gray-700 text-white text-xs rounded-full w-3.5 h-3.5 flex items-center justify-center text-[10px]">99</span>
+                  <Link href="/help">
+                    <HelpCircle className="w-4 h-4 text-gray-700 cursor-pointer hidden sm:block" />
+                  </Link>
+                  <div className="relative">
+                    <Link href="/cart">
+                      <ShoppingBag className="w-4 h-4 text-gray-700 cursor-pointer" />
+                    </Link>
+                    <span className="absolute -top-1 -right-1 bg-gray-700 text-white text-xs rounded-full w-3.5 h-3.5 flex items-center justify-center text-[10px]">99</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
 
       {/* Mobile Menu */}
       <div className={`lg:hidden absolute w-full bg-white z-40 border-b border-gray-200 transition-all duration-300 ${isMobileMenuOpen ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}>
@@ -237,8 +237,7 @@ const HeaderNavbar = () => {
         </div>
       </div>
 
-       
-       {/* Secondary Navigation */}
+      {/* Secondary Navigation */}
       <div className="w-full border-b border-gray-200 hidden sm:block bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center space-x-8 h-12 items-center overflow-x-auto">

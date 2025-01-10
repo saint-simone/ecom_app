@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 const ProductCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const slides = [
     {
       id: 1,
@@ -15,7 +15,7 @@ const ProductCarousel = () => {
     },
     {
       id: 2,
-      title: "Men's Active Shoes",
+      title: "Women's Active Shoes",
       image: "/pexels-athul-adhu-186900-684152.jpg",
       category: "ON THE MOVE",
     },
@@ -46,7 +46,7 @@ const ProductCarousel = () => {
   ];
 
   const tabs = ['ON THE MOVE', 'EVERYDAY WEAR', 'WEATHER READY'];
-  
+
   // Update active tab based on current slide
   const activeTab = slides[currentSlide]?.category;
 
@@ -96,7 +96,7 @@ const ProductCarousel = () => {
           {slides.map((slide, index) => {
             const isVisible = index === currentSlide || index === currentSlide + 1;
             const position = index % 2 === 0 ? 'left' : 'right';
-            
+
             return (
               <div
                 key={slide.id}
@@ -110,19 +110,21 @@ const ProductCarousel = () => {
                   display: isVisible ? 'block' : 'none'
                 }}
               >
-                <div className="relative h-full">
-                  <Image
-                    src={slide.image}
-                    fill
-                    alt={slide.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-20">
-                    <div className="absolute bottom-8 left-8">
-                      <h2 className="text-white text-3xl font-bold">
-                        {slide.title}
-                      </h2>
-                    </div>
+                <div className="relative h-full overflow-hidden group">
+                  {/* Image container with zoom effect on hover */}
+                  <div className="relative w-full h-full group-hover:scale-110 transform transition-transform duration-300 ease-in-out">
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      width={1000}  // Set a fixed width
+                      height={1000} // Set a fixed height
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+
+                  {/* Center the text in the middle of the image */}
+                  <div className="absolute inset-0 flex items-center justify-center text-center bg-black bg-opacity-40">
+                    <h2 className="text-white text-3xl font-bold px-4">{slide.title}</h2>
                   </div>
                 </div>
               </div>
